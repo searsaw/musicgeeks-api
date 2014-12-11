@@ -5,6 +5,8 @@ if ENV['RACK_ENV']
   Dotenv.load
 end
 
+require 'grape'
+
 require 'lib/app'
 
 run API::Version1
