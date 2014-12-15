@@ -16,6 +16,7 @@ db_args = {
 }
 DB = Sequel.postgres(db_args)
 
+require 'lib/models/song'
 require 'lib/app'
 
 run API::Version1
