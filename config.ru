@@ -16,6 +16,16 @@ db_args = {
 }
 DB = Sequel.postgres(db_args)
 
+require 'grape-rabl'
+
+use Rack::Config do |env|
+  env['api.tilt.root'] = 'lib/views'
+end
+
+Grape::Rabl.configure do |config|
+  config.cache_template_loading = true
+end
+
 require 'lib/models/song'
 require 'lib/app'
 
