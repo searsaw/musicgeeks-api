@@ -11,7 +11,7 @@ module API
         @songs = Song.all
       end
 
-      get ':slug', 'songs/song' do
+      get ':slug', rabl: 'songs/song' do
         @song = Song.find(slug: params[:slug].to_s)
       end
 

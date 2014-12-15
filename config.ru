@@ -7,6 +7,8 @@ end
 
 require 'grape'
 require 'sequel'
+require 'oj'
+require 'grape-rabl'
 
 db_args = {
   host: 'localhost',
@@ -15,8 +17,6 @@ db_args = {
   password: ENV['MUSICGEEKS_PGSQL_PASSWORD']
 }
 DB = Sequel.postgres(db_args)
-
-require 'grape-rabl'
 
 use Rack::Config do |env|
   env['api.tilt.root'] = 'lib/views'
