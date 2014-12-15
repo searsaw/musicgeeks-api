@@ -10,8 +10,8 @@ module API
         @songs = Song.all
       end
 
-      get ':id' do
-        @song = Song.with_pk!(params[:id])
+      get ':slug' do
+        @song = Song.find(slug: params[:slug].to_s)
       end
 
     end
