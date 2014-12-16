@@ -2,6 +2,7 @@ $:.unshift File.expand_path '..', __FILE__
 
 if ENV['RACK_ENV'].to_sym == :development
   require 'dotenv'
+  require 'pry'
   Dotenv.load
 end
 
@@ -32,6 +33,8 @@ Grape::Rabl.configure do |config|
 end
 
 require 'lib/models/song'
+require 'lib/models/user'
+require 'lib/models/access_token'
 require 'lib/app'
 
 run API::Version1

@@ -5,6 +5,17 @@ module API
     formatter :json, Grape::Formatter::Rabl
     rescue_from :all
 
+    helpers do
+      def access_token_valid?
+        token = AccessToken.find(token: params[:api_key])
+        token && token.valid_on_domain?(request.host)
+      end
+    end
+
+    before do
+      error! 'Access Denied', 401 unless access_token_valid?
+    end
+
     resource :songs do
 
       get '/', rabl: 'songs/songs' do
