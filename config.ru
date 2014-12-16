@@ -22,6 +22,11 @@ use Rack::Config do |env|
   env['api.tilt.root'] = 'lib/views'
 end
 
+Rabl.configure do |config|
+  config.include_json_root = true
+  config.include_child_root = false
+end
+
 Grape::Rabl.configure do |config|
   config.cache_template_loading = true
 end
