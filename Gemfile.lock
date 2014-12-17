@@ -84,4 +84,4 @@ DEPENDENCIES
   pg (~> 0.17.1)
   pry
   sequel (~> 4.17.0)
-  thin (~> 1.6.3)
+  thin
