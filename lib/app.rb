@@ -1,6 +1,6 @@
 module API
   class Version1 < Grape::API
-    version 'v1', using: :header, vendor: :musicgeeks, strict: true, cascade: false
+    version 'v1'
     format :json
     formatter :json, Grape::Formatter::Rabl
     rescue_from :all

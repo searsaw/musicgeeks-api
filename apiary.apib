@@ -6,7 +6,7 @@ The Musicgeeks API provides songs that have been displayed on the [Musicgeeks.co
 # Group Song
 Song-related resources of the Musicgeeks API.
 
-## Songs Collection [/songs{?apikey}]
+## Songs Collection [/v1/songs{?apikey}]
 Collection of all songs.
 
 The collection is returned as an array of JSON objects.  Each object is a song.
@@ -16,7 +16,7 @@ The collection is returned as an array of JSON objects.  Each object is a song.
 
 + Model (application/json)
     + Body
-    
+
             [
                 {
                     gif_url: "https://d2n2dy9c7n262m.cloudfront.net/img/victorcourtright.gif",
@@ -48,7 +48,7 @@ The collection is returned as an array of JSON objects.  Each object is a song.
 + Response 200
     [Songs Collection][]
 
-## Song [/songs/{slug}{?apikey}]
+## Song [/v1/songs/{slug}{?apikey}]
 A song that was featured on the Musicgeeks site.
 
 The song resource has the following attributes:
@@ -74,7 +74,7 @@ The *id* is set when the song is created in the Musicgeeks API.
     JSON representation of the song.
 
     + Body
-    
+
             {
                 gif_url: "https://d2n2dy9c7n262m.cloudfront.net/img/rickmorty.gif",
                 page_title: "Rick & Morty dancing to Wu-Tang Clan (@WuTangClan)",
@@ -87,7 +87,7 @@ The *id* is set when the song is created in the Musicgeeks API.
                 slug: "wu-tang",
                 posted_on: "2014-12-05 10:00:00"
             }
-            
+
 ### Retrieve a Single Song [GET]
 + Response 200
     [Song][]
