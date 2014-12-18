@@ -1,46 +1,93 @@
 FORMAT: 1A
 
 # Musicgeeks
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+The Musicgeeks API provides songs that have been displayed on the [Musicgeeks.co website](http://musicgeeks.co).
 
-# Group Notes
-Notes related resources of the **Notes API**
+# Group Song
+Song-related resources of the Musicgeeks API.
 
-## Notes Collection [/notes]
-### List all Notes [GET]
-+ Response 200 (application/json)
+## Songs Collection [/songs{?apikey}]
+Collection of all songs.
 
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
-
-### Create a Note [POST]
-+ Request (application/json)
-
-        { "title": "Buy cheese and bread for breakfast." }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Note [/notes/{id}]
-A single Note object with all its details
+The collection is returned as an array of JSON objects.  Each object is a song.
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + apikey (string) ... The API key of the user
 
-### Retrieve a Note [GET]
-+ Response 200 (application/json)
++ Model (application/json)
+    + Body
+    
+            [
+                {
+                    gif_url: "https://d2n2dy9c7n262m.cloudfront.net/img/victorcourtright.gif",
+                    page_title: "Victor Courtright's (@victorgogogo) Boxing Girl rocking to Lorelei Carlson (@loreleicarlson)",
+                    url: "http://www.musicgeeks.co/lorelei-carlson/",
+                    soundcloud_url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/174279015&color=777be0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false",
+                    who_where: "Lorelei Carlson is a young singer-songwriter living in Los Angeles, CA.",
+                    song_title: null,
+                    love: "A very tough song to cover, especially this well. Lorelei delivers a dark, almost Trent Reznor-esque take on it.",
+                    cred: "Lorelei's a pretty new artist from what I can tell, with this cover garnering quite a lot of attention. Her solid <em><a href="https://itunes.apple.com/us/album/dopamine-ep/id925643476" target="_blank">debut EP</a></em> just came out as well.",
+                    slug: "lorelei-carlson",
+                    posted_on: "2014-11-17 13:00:00"
+                },
+                {
+                    gif_url: "https://d2n2dy9c7n262m.cloudfront.net/img/baconfootloose.gif",
+                    page_title: "Footloose's Ren McCormack (@kevinbacon) dancing to Kiwi Time (@KiwiTimeBand) & Sir Mix-a-Lot (@therealmix)",
+                    url: "http://www.musicgeeks.co/kiwitime/",
+                    soundcloud_url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/174643738&color=777be0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false",
+                    who_where: "Kiwi Time is a foursome from Belarus who relocated to San Francisco. Sir Mix-a-Lot is an MC and producer in Seattle.",
+                    song_title: null,
+                    love: "My gosh what's not to love?! Insanely fun song from a band I can tell I'm going to fawn over, with a cameo from Sir Mix-a-Lot himself? Bananas.",
+                    cred: "Grammy winner Sir Mix-a-Lot needs no introduction. Kiwi Time is now working with super-producer Dan Shea (Mariah Carey, Janet Jackson, Robin Thicke) on six new songs.",
+                    slug: "kiwitime",
+                    posted_on: "2014-12-04 10:00:00"
+                }
+            ]
 
-    + Header
+### Get all songs [GET]
++ Response 200
+    [Songs Collection][]
 
-            X-My-Header: The Value
+## Song [/songs/{slug}{?apikey}]
+A song that was featured on the Musicgeeks site.
+
+The song resource has the following attributes:
+
+- id
+- url
+- slug
+- page_title
+- song_title
+- soundcloud_url
+- gif_url
+- love
+- who_where
+- cred
+- posted_on
+
+The *id* is set when the song is created in the Musicgeeks API.
+
++ Parameters
+    + apikey (string) ... The API key of the user
+    + slug (string) ... The slug of the song used on the site.
++ Model (application/json)
+    JSON representation of the song.
 
     + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
-
-### Remove a Note [DELETE]
-+ Response 204
+    
+            {
+                gif_url: "https://d2n2dy9c7n262m.cloudfront.net/img/rickmorty.gif",
+                page_title: "Rick & Morty dancing to Wu-Tang Clan (@WuTangClan)",
+                url: "http://www.musicgeeks.co/wu-tang/",
+                soundcloud_url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/178626205&color=777be0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false",
+                who_where: "Wu-Tang Clan is a New York hip-hop group.",
+                song_title: null,
+                love: "Wu-Tang after 20 years; still hugely talented if disjointed as a group. Nobody else can sound like Wu-Tang.",
+                cred: "Wu-Tang isÂ widely considered one of the (if not <em>the</em>) best hip-hop groups of all time.",
+                slug: "wu-tang",
+                posted_on: "2014-12-05 10:00:00"
+            }
+            
+### Retrieve a Single Song [GET]
++ Response 200
+    [Song][]
