@@ -8,6 +8,5 @@ gem 'oj'
 gem 'thin'
 
 group :development do |variable|
-  gem 'dotenv', '~>1.0.2'
   gem 'pry'
 end
