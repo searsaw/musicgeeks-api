@@ -7,7 +7,7 @@ module API
 
     helpers do
       def access_token_valid?
-        token = AccessToken.find(token: params[:api_key])
+        token = AccessToken.find(token: params[:apikey])
         token && token.valid_on_domain?(request.host)
       end
     end
