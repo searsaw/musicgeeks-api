@@ -5,3 +5,4 @@ tmp
 .rbenv-vars
 bin
 .bundle
+vendor
