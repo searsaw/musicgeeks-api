@@ -1,7 +1,11 @@
+require 'rubygems'
+require 'bundler'
+Bundler.require(:default)
+
 $:.unshift File.expand_path '..', __FILE__
 
 if ENV['RACK_ENV'].to_sym == :development
-  require 'pry'
+  Bundler.require(:development)
 end
 
 require 'grape'
