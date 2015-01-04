@@ -19,7 +19,7 @@ module API
     resource :songs do
 
       get '/', rabl: 'songs/songs' do
-        @songs = Song.all
+        @songs = Song.order(Sequel.desc(:posted_on)).all
       end
 
       get ':slug', rabl: 'songs/song' do
